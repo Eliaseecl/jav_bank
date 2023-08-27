@@ -2,7 +2,7 @@
 
 IMPORTANTE:
 
-Solo compatible con multicharacter, no funcionara sin el, si saben hacerlo bien por vosotros, besitos
+Modificado para que funcione sin Multicharacter
 
 Preview : 
 
