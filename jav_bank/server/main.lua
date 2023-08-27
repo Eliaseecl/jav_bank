@@ -1,19 +1,20 @@
+--| Modificado sin multichar por Eliaseecl |--
+
 local player_pin_code = nil
 
 ESX.RegisterServerCallback('jav_bank:getUsersAccounts', function(source, cb)
     local xPlayer = ESX.GetPlayerFromId(source)
-    local currentChar = xPlayer.identifier:sub(1, xPlayer.identifier:find(':') - 1)
-    local identifier = xPlayer.identifier:sub(xPlayer.identifier:find(':') + 1, -1)
+    local identifier = xPlayer.getIdentifier()
     local result_cards = {}
     local result_transactions = {}
 
-    local queryIdentifier = "%" ..identifier
+    local queryIdentifier = identifier
 
     local data_cards = MySQL.query.await('SELECT identifier, firstname, lastname, accounts, pin_code FROM users WHERE identifier LIKE ?', {queryIdentifier})
     local data_transactions = MySQL.query.await('SELECT title, other_info, amount, date, type FROM jav_bank WHERE identifier = ? AND date >= DATE_SUB(NOW(), INTERVAL 3 DAY)', {xPlayer.getIdentifier()})
     
     for k,v in pairs(data_cards) do
-        if v.identifier ~= currentChar .. ':' .. identifier then
+        if v.identifier ~= identifier then
 
             table.insert(result_cards, {
                 identifier = v.identifier,
