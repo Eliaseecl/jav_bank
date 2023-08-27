@@ -2,9 +2,9 @@ fx_version 'cerulean'
 
 games { 'gta5' }
 
-author 'Javi'
+author 'Javi | Modificado sin multichar por Eliaseecl'
 
-description 'Bank by Javi'
+description 'Bank by Javi | Modificado sin multichar por Eliaseecl'
 
 ui_page 'ui/index.html'
 
